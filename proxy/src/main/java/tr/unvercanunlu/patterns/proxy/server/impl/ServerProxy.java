@@ -10,7 +10,7 @@ public class ServerProxy implements IServer {
 
     @Override
     public void connect(Client client) {
-        if (!validateClient(client) || !validateRole(client.role)) {
+        if (!validateClient(client)) {
             return;
         }
 
@@ -19,22 +19,18 @@ public class ServerProxy implements IServer {
         adminServerConnection.connect(client);
     }
 
-    boolean validateClient(Client client) {
+    private boolean validateClient(Client client) {
         if (client == null) {
             System.out.println("Client information not found.");
             return false;
         }
 
-        return true;
-    }
-
-    boolean validateRole(Role role) {
-        if (role == null) {
+        if (client.role == null) {
             System.out.println("Role information not found.");
             return false;
         }
 
-        if (!role.equals(Role.ADMIN)) {
+        if (!client.role.equals(Role.ADMIN)) {
             System.out.println("Not valid role.");
             return false;
         }

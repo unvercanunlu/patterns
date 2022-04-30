@@ -9,5 +9,6 @@
     <version>1.0</version>
     <modules>
         <module>proxy</module>
+        <module>observer</module>
     </modules>
 </project>

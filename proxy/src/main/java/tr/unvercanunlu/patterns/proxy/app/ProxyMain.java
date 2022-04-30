@@ -5,13 +5,14 @@ import tr.unvercanunlu.patterns.proxy.client.Role;
 import tr.unvercanunlu.patterns.proxy.server.IServer;
 import tr.unvercanunlu.patterns.proxy.server.impl.ServerProxy;
 
-public class Main {
+public class ProxyMain {
 
     static void userTryToConnect() {
         Client user = new Client();
         user.username = "user";
         user.password = "12345";
         user.role = Role.USER;
+        System.out.println(user + " is created.");
 
         IServer server = new ServerProxy();
         server.connect(user);
@@ -26,6 +27,7 @@ public class Main {
         Client client = new Client();
         client.username = "client";
         client.password = "12345";
+        System.out.println(client + " is created.");
 
         IServer server = new ServerProxy();
         server.connect(client);
@@ -36,6 +38,7 @@ public class Main {
         admin.username = "admin";
         admin.password = "12345";
         admin.role = Role.ADMIN;
+        System.out.println(admin + " is created.");
 
         IServer server = new ServerProxy();
         server.connect(admin);

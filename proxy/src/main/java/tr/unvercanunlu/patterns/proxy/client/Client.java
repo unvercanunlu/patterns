@@ -10,10 +10,10 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{"
-                + "username='" + username + "', "
-                + "password='" + password + "', "
-                + "role=" + role
-                + '}';
+        return "Client{" +
+                "username='" + username + "', " +
+                "password='" + password + "', " +
+                "role=" + role +
+                '}';
     }
 }
