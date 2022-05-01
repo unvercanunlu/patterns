@@ -7,6 +7,6 @@ public class ServerImpl implements IServer {
 
     @Override
     public void connect(Client client) {
-        System.out.println("Server is connected with " + client.toString());
+        System.out.println("Server is connected with " + client + ".");
     }
 }

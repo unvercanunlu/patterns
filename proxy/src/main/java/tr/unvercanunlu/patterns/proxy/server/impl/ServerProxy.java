@@ -15,7 +15,6 @@ public class ServerProxy implements IServer {
         }
 
         System.out.println("Validation is done.");
-
         adminServerConnection.connect(client);
     }
 
