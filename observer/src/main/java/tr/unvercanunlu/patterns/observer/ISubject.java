@@ -2,11 +2,11 @@ package tr.unvercanunlu.patterns.observer;
 
 import tr.unvercanunlu.patterns.observer.impl.Event;
 
-public interface Subject {
+public interface ISubject {
 
-    void register(Observer observer);
+    void register(IObserver observer);
 
-    void unRegister(Observer observer);
+    void unRegister(IObserver observer);
 
     void notifies();
 

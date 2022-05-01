@@ -1,30 +1,29 @@
 package tr.unvercanunlu.patterns.observer.impl;
 
-import tr.unvercanunlu.patterns.observer.Observer;
-import tr.unvercanunlu.patterns.observer.Subject;
+import tr.unvercanunlu.patterns.observer.IObserver;
+import tr.unvercanunlu.patterns.observer.ISubject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventManager implements Subject {
+public class EventManager implements ISubject {
 
+    public final List<IObserver> observers = new ArrayList<>();
     private Event lastEvent;
 
-    public List<Observer> observerList = new ArrayList<>();
-
     @Override
-    public void register(Observer observer) {
+    public void register(IObserver observer) {
         if (!validateObserver(observer)) {
             return;
         }
 
-        Observer registered = observerList.stream()
+        IObserver registered = observers.stream()
                 .filter(o -> o.getIdentifier() != null && o.getIdentifier().equals(observer))
                 .findAny()
                 .orElse(null);
 
         if (registered == null) {
-            observerList.add(observer);
+            observers.add(observer);
             System.out.println(observer + " is registered.");
         } else {
             System.out.println(observer + " is already registered.");
@@ -32,14 +31,14 @@ public class EventManager implements Subject {
     }
 
     @Override
-    public void unRegister(Observer observer) {
-        Observer registered = observerList.stream()
+    public void unRegister(IObserver observer) {
+        IObserver registered = observers.stream()
                 .filter(o -> o.equals(observer))
                 .findAny()
                 .orElse(null);
 
         if (registered != null) {
-            observerList.remove(observer);
+            observers.remove(observer);
         } else {
             System.out.println(observer + " is not registered.");
         }
@@ -47,7 +46,7 @@ public class EventManager implements Subject {
 
     @Override
     public void notifies() {
-        for (Observer observer : observerList) {
+        for (IObserver observer : observers) {
             observer.update(lastEvent);
         }
     }
@@ -58,7 +57,7 @@ public class EventManager implements Subject {
         notifies();
     }
 
-    boolean validateObserver(Observer observer) {
+    private boolean validateObserver(IObserver observer) {
         if (observer == null) {
             System.out.println("Observer is not valid.");
             return false;

@@ -1,19 +1,18 @@
 package tr.unvercanunlu.patterns.observer.impl;
 
-import tr.unvercanunlu.patterns.observer.Observer;
+import tr.unvercanunlu.patterns.observer.IObserver;
 
-public class EventListener implements Observer {
+public class EventListener implements IObserver {
 
-    private String name;
+    private final String name;
 
     public EventListener(String name) {
         this.name = name;
-
     }
 
     @Override
     public void update(Event event) {
-        System.out.println(event.toString() + " is got by " + name + ".");
+        System.out.println(event + " is got by " + name + ".");
     }
 
     @Override
@@ -23,8 +22,6 @@ public class EventListener implements Observer {
 
     @Override
     public String toString() {
-        return "EventListener{" +
-                "name='" + name + "'" +
-                '}';
+        return "EventListener{name='" + name + "'" + '}';
     }
 }
