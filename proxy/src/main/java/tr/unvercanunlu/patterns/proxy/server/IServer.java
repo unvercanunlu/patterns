@@ -4,5 +4,5 @@ import tr.unvercanunlu.patterns.proxy.client.Client;
 
 public interface IServer {
 
-    void connect(Client client);
+	void connect(Client client);
 }

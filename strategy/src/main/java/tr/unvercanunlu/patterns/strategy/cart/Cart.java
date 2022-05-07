@@ -7,38 +7,38 @@ import java.util.List;
 
 public class Cart {
 
-    public final List<CartItem> items = new ArrayList<>();
+	public final List<CartItem> items = new ArrayList<>();
 
-    public void add(CartItem item) {
-        items.add(item);
-    }
+	public void add(CartItem item) {
+		items.add(item);
+	}
 
-    public double calculateTotal() {
-        double total = 0;
+	public double calculateTotal() {
+		double total = 0;
 
-        for (CartItem item : items) {
-            double itemPrice = item.calculateItemPrice();
-            total += itemPrice;
-        }
+		for (CartItem item : items) {
+			double itemPrice = item.calculateItemPrice();
+			total += itemPrice;
+		}
 
-        return total;
-    }
+		return total;
+	}
 
-    public void pay(IPaymentStrategy payment) {
-        double total = calculateTotal();
+	public void pay(IPaymentStrategy payment) {
+		double total = calculateTotal();
 
-        payment.pay(total);
+		payment.pay(total);
 
-        for (int i = 0; i < items.size(); i++) {
-            CartItem item = items.get(i);
-            if (item != null) {
-                items.remove(item);
-            }
-        }
-    }
+		for (int i = 0; i < items.size(); i++) {
+			CartItem item = items.get(i);
+			if (item != null) {
+				items.remove(item);
+			}
+		}
+	}
 
-    @Override
-    public String toString() {
-        return "Cart{items=" + items + '}';
-    }
+	@Override
+	public String toString() {
+		return "Cart{items=" + items + '}';
+	}
 }

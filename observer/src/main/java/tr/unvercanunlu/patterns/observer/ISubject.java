@@ -4,11 +4,11 @@ import tr.unvercanunlu.patterns.observer.impl.Event;
 
 public interface ISubject {
 
-    void register(IObserver observer);
+	void register(IObserver observer);
 
-    void unRegister(IObserver observer);
+	void unRegister(IObserver observer);
 
-    void notifies();
+	void notifies();
 
-    void postEvent(Event event);
+	void postEvent(Event event);
 }

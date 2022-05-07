@@ -4,7 +4,7 @@ import tr.unvercanunlu.patterns.observer.impl.Event;
 
 public interface IObserver {
 
-    void update(Event event);
+	void update(Event event);
 
-    String getIdentifier();
+	String getIdentifier();
 }
